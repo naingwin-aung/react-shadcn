@@ -1,6 +1,6 @@
 "use client";
 
-import { LogOut, Moon, Settings, Sidebar, Sun, User } from "lucide-react";
+import { Check, LogOut, Moon, Settings, Sidebar, Sun, User } from "lucide-react";
 import Link from "next/link";
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
 import {
@@ -27,8 +27,7 @@ const Navbar = () => {
       {/* RIGHT */}
       <div className="flex items-center gap-4">
         {/* <Link href="/">Dashboard</Link> */}
-
-        {/* THEME MENU */}
+        
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
             <Button variant="outline" size="icon">
@@ -38,18 +37,36 @@ const Navbar = () => {
             </Button>
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end" sideOffset={10}>
-            <DropdownMenuItem onClick={() => setTheme("light")}>
+            <DropdownMenuItem
+              onClick={() => setTheme("light")}
+              className="flex items-center justify-between"
+            >
               Light
+              {theme === "light" && (
+                <Check strokeWidth={3} className="ml-auto h-4 w-4" />
+              )}
             </DropdownMenuItem>
-            <DropdownMenuItem onClick={() => setTheme("dark")}>
+
+            <DropdownMenuItem
+              onClick={() => setTheme("dark")}
+              className="flex items-center justify-between"
+            >
               Dark
+              {theme === "dark" && <Check strokeWidth={3} className="ml-auto h-4 w-4" />}
             </DropdownMenuItem>
-            <DropdownMenuItem onClick={() => setTheme("system")}>
+
+            <DropdownMenuItem
+              onClick={() => setTheme("system")}
+              className="flex items-center justify-between"
+            >
               System
+              {theme === "system" && (
+                <Check strokeWidth={3} className="ml-auto h-4 w-4" />
+              )}
             </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
-
+        
         {/* USER MENU */}
         <DropdownMenu>
           <DropdownMenuTrigger className="cursor-pointer select-none focus:outline-none">
